@@ -1,13 +1,14 @@
-/*** Text-based Role-play Game ***/
+/*** Move an object with Nethack-movement keys ***/
+/*===LINUX ONLY===*/
 #include <stdio.h>
 #include <curses.h>
 #include <unistd.h>
 
 int main(){
     int i;
-    int x = 0;
-    int y = 0;
-    char ch;
+    int x = 0; //x coordinates
+    int y = 0; //y coordinates
+    char ch; //For printing the character
 
 
     (void) initscr();      /* initialize the curses library */
@@ -18,24 +19,24 @@ int main(){
 
     printf("Press h, j, k, or l to start. Press $ to stop:\n");
     clear();
-
+    
     while (ch != '$'){
 
-        clear();
-        ch = getchar();
+        clear(); //Clears the screen
+        ch = getchar(); //Get one character of user input
 
-        if(ch == 'l')
+        if(ch == 'l') //If the character inputted was l,
         {
-            x++;
-            mvaddch(y, x, '@'); //first y coordinate, then the x coordinate
-            refresh();
+            x++; //Increase x by one 
+            mvaddch(y, x, '@'); //first y coordinate, then the x coordinate. Move to the unchanged y and increased x coordinate
+            refresh(); //Refresh the screen
         //    sleep(1);
         }
-        else if(ch == 'h')
+        else if(ch == 'h') //If the character inputted was h,
         {
-            x--;
-            mvaddch(y, x, '@'); //first y coordinate, then the x coordinate
-            refresh();
+            x--; //decrease x by one
+            mvaddch(y, x, '@'); //first y coordinate, then the x coordinate. Move to the unchanged y and decreased x coordinate
+            refresh(); 
         //    sleep(1);
         }
         else if(ch == 'j')
@@ -53,8 +54,8 @@ int main(){
             sleep(0.5);
         }
     }
-    mvprintw(30, 10, "Press enter to continue:");
-    getch();
+    mvprintw(30, 10, "Press enter to continue:"); //Print message 3o coordinates down and ten over
+    getch(); //Get character; this pauses the program until user input is received. 
 
-    endwin();
+    endwin(); //End the ncurses code
 }
