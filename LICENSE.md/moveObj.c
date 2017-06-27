@@ -1,4 +1,4 @@
-/*** Text-based Role-play Game ***/
+/***Example program for using ncurses in Linux***/
 #include <stdio.h>
 #include <curses.h>
 #include <unistd.h>
